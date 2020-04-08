@@ -1,0 +1,31 @@
+{
+  "name": "js_postgres_client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "hindreen": "echo \"Hi Hindreen\"",
+    "start": "nodemon app.js",
+    "db:create": "createdb --echo knexpress",
+    "db:drop": "dropdb --if-exists --echo knex_demo",
+    "db:migrate": "knex migrate:latest",
+    "db:rollback": "knex migrate:rollback",
+    "db:reset": "npm run db:drop && npm run db:create && npm run db:migrate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "knex": "^0.20.13",
+    "method-override": "^3.0.0",
+    "morgan": "^1.10.0",
+    "pg": "^8.0.0"
+  },
+  "devDependencies": {
+    "faker": "^4.1.0",
+    "nodemon": "^2.0.2"
+  }
+}

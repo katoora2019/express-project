@@ -1,0 +1,30 @@
+<%- include('../partials/header.ejs') %>
+<div class="container">
+    <h1>Posts</h1>
+    <div class="card mb-4">
+        <% if(post.imageUrl) { %> 
+            <img class="smal-image" src="<%= post.imageUrl %>">
+        <% } %> 
+        
+        <div class="card body">
+            <h5 class="card-title"><%= post.title %></h5>
+            
+            <p class="card-text">
+                <div><%= post.content %></div>
+                <div><em>Seen <%= post.viewCount %> time(s)</em>.</div>
+                <div><em>Posted at <%= new Date(post.createdAt).toLocaleString() %> </em></div>
+            </p>
+
+            <div class="d-flex">
+                <a href="/posts/<%= post.id %>/edit" class="btn btn-outline-success mr-2">
+                    Edit
+                </a>
+            </div>
+            <form method="POST" action="/posts/<%= post.id %>" >
+                <input type="hidden" name="_method" value="DELETE" />
+                <input type="submit" class="btn btn-outline-danger" value="Delete" />
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer.ejs') %>
