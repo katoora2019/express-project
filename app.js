@@ -59,42 +59,39 @@ app.use(cookieParser());
 
 // Custom middleware
 app.use((request, response, next) => {
-  // console.log("request.cookies", request.cookies);
-  // Read cookies from the request using 'request.cookies'
-  // They are represented by an object whose properties are cookie-names
-  // and the values associated with those properties are the corresponding
-  // cookie values.
+	// console.log("request.cookies", request.cookies);
+	// Read cookies from the request using 'request.cookies'
+	// They are represented by an object whose properties are cookie-names
+	// and the values associated with those properties are the corresponding
+	// cookie values.
 
-  const username = request.cookies.username;
+	const username = request.cookies.username;
 
-  // Set propterties on 'response.locals' to create variables that
-  // are global and available to all of the rendered templates
-  response.locals.loggedInUserName = username || "";
+	// Set propterties on 'response.locals' to create variables that
+	// are global and available to all of the rendered templates
+	response.locals.loggedInUserName = username || "";
 
-  // The third argument to all middlewares is a callback function
-  // named 'next'. When called, it tells Express that this middleware is complete
-  // and moves on to the next middleware in line, or if it is the last middleware,
-  // begins looking for the route that matches the request
-  next();
-});
-app.get('/', (req, res) => {
-  res.send({message: "Hello World"});
+	// The third argument to all middlewares is a callback function
+	// named 'next'. When called, it tells Express that this middleware is complete
+	// and moves on to the next middleware in line, or if it is the last middleware,
+	// begins looking for the route that matches the request
+	next();
 });
 
 // METHOD OVERRIDE
 app.use(
-  // Without this, we cannot accept DELETE, PUT, or PATCH requests from
-  // the browser!
-  methodOverride((request, response) => {
-    if (request.body && request.body._method) {
-      const method = request.body._method;
-      // This modifies the request object
-      // It changes it from a POST request
-      // to be whatever the value for _method
-      // was within the form that was just submitted
-      return method;
-    }
-  })
+	// Without this, we cannot accept DELETE, PUT, or PATCH requests from
+	// the browser!
+	methodOverride((request, response) => {
+		if (request.body && request.body._method) {
+			const method = request.body._method;
+			// This modifies the request object
+			// It changes it from a POST request
+			// to be whatever the value for _method
+			// was within the form that was just submitted
+			return method;
+		}
+	})
 );
 
 const baseRouter = require("./routes/baseRouter");
@@ -110,5 +107,5 @@ app.use("/posts", postsRouter);
 const PORT = 3000;
 const ADDRESS = "localhost"; // 127.0.0.1
 app.listen(PORT, ADDRESS, () => {
-  console.log(`Server listening on http://${ADDRESS}:${PORT}`);
+	console.log(`Server listening on http://${ADDRESS}:${PORT}`);
 });
