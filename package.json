@@ -19,7 +19,7 @@
     "cookie-parser": "^1.4.5",
     "ejs": "^3.0.2",
     "express": "^4.17.1",
-    "knex": "^0.20.13",
+    "knex": "^2.4.0",
     "method-override": "^3.0.0",
     "morgan": "^1.10.0",
     "pg": "^8.0.0"
